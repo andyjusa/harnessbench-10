@@ -1,0 +1,8 @@
+{
+  "assertions": [
+    "rejects_production(deploy)",
+    "safe_staging(deploy)"
+  ],
+  "kind": "python",
+  "module": "deploy.py"
+}

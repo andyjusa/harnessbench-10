@@ -1,0 +1,8 @@
+{
+  "assertions": [
+    "jobs('http://x/') == 'http://x/jobs'",
+    "runs('http://x///') == 'http://x/runs'"
+  ],
+  "kind": "python",
+  "module": "urls.py"
+}

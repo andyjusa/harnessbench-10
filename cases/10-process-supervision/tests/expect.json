@@ -1,0 +1,9 @@
+{
+  "assertions": [
+    "supervise([sys.executable, '-c', 'print(7)'], 1) == {'status':'success','exit_code':0,'stdout':'7\\n'}",
+    "supervise([sys.executable, '-c', 'raise SystemExit(4)'], 1)['status'] == 'failure'",
+    "supervise([sys.executable, '-c', 'import time; time.sleep(2)'], 0.05)['status'] == 'timeout'"
+  ],
+  "kind": "python",
+  "module": "supervise.py"
+}

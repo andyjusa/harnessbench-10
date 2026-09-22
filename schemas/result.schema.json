@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harnessbench.example/schemas/result.schema.json",
+  "title": "HarnessBench result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "case_id", "variant", "correct", "verifier_result", "wall_time_seconds", "model_turns", "backend_calls", "input_tokens", "output_tokens", "cache_read_tokens", "cache_write_tokens", "cost_usd", "tool_calls", "retries", "timeouts", "failures"],
+  "properties": {
+    "schema": {"const": "harnessbench.result/v1"},
+    "case_id": {"type": "string"},
+    "variant": {"type": "string"},
+    "correct": {"type": "boolean"},
+    "verifier_result": {"type": "integer", "minimum": 0, "maximum": 1},
+    "wall_time_seconds": {"type": "number", "minimum": 0},
+    "model_turns": {"type": "integer", "minimum": 0},
+    "backend_calls": {"type": "integer", "minimum": 0},
+    "input_tokens": {"type": "integer", "minimum": 0},
+    "output_tokens": {"type": "integer", "minimum": 0},
+    "cache_read_tokens": {"type": "integer", "minimum": 0},
+    "cache_write_tokens": {"type": "integer", "minimum": 0},
+    "cost_usd": {"type": "number", "minimum": 0},
+    "tool_calls": {"type": "integer", "minimum": 0},
+    "retries": {"type": "integer", "minimum": 0},
+    "timeouts": {"type": "integer", "minimum": 0},
+    "failures": {"type": "array", "items": {"type": "string"}}
+  }
+}

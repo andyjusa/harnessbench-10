@@ -1,0 +1,8 @@
+{
+  "assertions": [
+    "total_tokens(['usage tokens=3', '{\"event\":\"usage\",\"tokens\":5}', 'bad']) == 8",
+    "total_tokens(['{\"event\":\"other\",\"tokens\":9}']) == 0"
+  ],
+  "kind": "python",
+  "module": "usage.py"
+}

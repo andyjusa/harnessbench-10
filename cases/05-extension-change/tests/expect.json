@@ -1,0 +1,12 @@
+{
+  "assertions": [
+    "'timeout' in extra[0].TOOLS",
+    "render('timeout', {'target':'build'}, {'status':'timed_out','elapsed_ms':50}) == 'process \u00b7 supervise build'",
+    "'status=ok elapsed_ms=12' in render('timeout', {'target':'test'}, {'status':'ok','elapsed_ms':12}, True)"
+  ],
+  "extra_modules": [
+    "extension/registry.py"
+  ],
+  "kind": "python",
+  "module": "extension/renderer.py"
+}

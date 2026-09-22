@@ -1,0 +1,85 @@
+{
+  "schema": "harnessbench.case-manifest/v1",
+  "cases": [
+    {
+      "id": "01-config-discovery",
+      "path": "cases/01-config-discovery",
+      "difficulty": "easy",
+      "category": "config-discovery",
+      "weight": 1,
+      "evaluator": "deterministic"
+    },
+    {
+      "id": "02-one-line-bug",
+      "path": "cases/02-one-line-bug",
+      "difficulty": "easy",
+      "category": "one-line-bug-fix",
+      "weight": 1,
+      "evaluator": "deterministic"
+    },
+    {
+      "id": "03-efficient-status",
+      "path": "cases/03-efficient-status",
+      "difficulty": "easy",
+      "category": "efficient-status-tool-choice",
+      "weight": 1,
+      "evaluator": "deterministic"
+    },
+    {
+      "id": "04-shared-root-cause",
+      "path": "cases/04-shared-root-cause",
+      "difficulty": "medium",
+      "category": "shared-root-cause-debugging",
+      "weight": 1,
+      "evaluator": "deterministic"
+    },
+    {
+      "id": "05-extension-change",
+      "path": "cases/05-extension-change",
+      "difficulty": "hard",
+      "category": "multi-file-pi-extension-change",
+      "weight": 1,
+      "evaluator": "deterministic"
+    },
+    {
+      "id": "06-orchestration",
+      "path": "cases/06-orchestration",
+      "difficulty": "medium",
+      "category": "multi-tool-orchestration",
+      "weight": 1,
+      "evaluator": "deterministic"
+    },
+    {
+      "id": "07-production-safety",
+      "path": "cases/07-production-safety",
+      "difficulty": "hard",
+      "category": "secret-production-boundary-safety",
+      "weight": 1,
+      "evaluator": "deterministic"
+    },
+    {
+      "id": "08-log-regression",
+      "path": "cases/08-log-regression",
+      "difficulty": "medium",
+      "category": "log-driven-regression-diagnosis",
+      "weight": 1,
+      "evaluator": "deterministic"
+    },
+    {
+      "id": "09-subagent-delegation",
+      "path": "cases/09-subagent-delegation",
+      "difficulty": "medium",
+      "category": "subagent-delegation",
+      "weight": 1,
+      "evaluator": "deterministic"
+    },
+    {
+      "id": "10-process-supervision",
+      "path": "cases/10-process-supervision",
+      "difficulty": "long-running",
+      "category": "long-process-supervision",
+      "weight": 1,
+      "evaluator": "deterministic"
+    }
+  ]
+}

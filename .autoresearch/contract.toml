@@ -1,0 +1,55 @@
+version = 1
+
+[project]
+name = "harnessbench-10"
+objective = "Compare managed Pi with PTC on versus off on the same ten deterministic Harbor tasks"
+program = ".autoresearch/program.md"
+
+[scope]
+mutable_paths = []
+protected_paths = ["cases/**", "schemas/**", "src/harnessbench/**"]
+
+[commands]
+smoke = "uv run python scripts/validate_offline.py"
+evaluate = "PYTHONPATH=src uv run harbor run --path cases --agent <variant>"
+verify = "uv run python -m unittest discover -s tests -v"
+evaluate_requires_confirmation = true
+
+[campaign]
+default_max_experiments = 20
+default_max_minutes = 240
+repetitions = 1
+paired_variants = ["harnessbench.agents:ManagedPiPtcOn", "harnessbench.agents:ManagedPiPtcOff"]
+trials_per_variant = 10
+hard_cost_limit_usd = 10.0
+stopping_rule = "Stop before a launch that could exceed USD 10, or on task/model/settings/evaluator mismatch"
+
+[acceptance]
+policy = "manual-gate"
+primary_metric = "correct"
+minimum_effect = 0.0
+
+[integrity]
+hash_paths = ["cases/**", "schemas/result.schema.json"]
+
+[[metrics]]
+name = "correct"
+direction = "maximize"
+role = "gate"
+threshold = 1.0
+tolerance = 0.0
+
+[[metrics]]
+name = "cost_usd"
+direction = "minimize"
+role = "secondary"
+
+[[metrics]]
+name = "backend_calls"
+direction = "minimize"
+role = "secondary"
+
+[[metrics]]
+name = "wall_time_seconds"
+direction = "minimize"
+role = "secondary"

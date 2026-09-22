@@ -1,0 +1,11 @@
+{
+  "assertions": [
+    "status() == {'state': 'idle', 'jobs': 0}"
+  ],
+  "forbid_imports": [
+    "os",
+    "subprocess"
+  ],
+  "kind": "python",
+  "module": "status.py"
+}

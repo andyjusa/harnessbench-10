@@ -1,0 +1,9 @@
+{
+  "command": [
+    "python3",
+    "project/tools/show_config.py"
+  ],
+  "cwd": ".",
+  "kind": "subprocess",
+  "stdout": "codex-fixed"
+}

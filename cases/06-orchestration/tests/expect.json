@@ -1,0 +1,18 @@
+{
+  "async_assertions": [
+    "collect(lambda: tool('n', 0.08), lambda: tool('f', 0.08))"
+  ],
+  "async_expected": {
+    "facts": {
+      "error": null,
+      "id": "f"
+    },
+    "nodes": {
+      "error": null,
+      "id": "n"
+    }
+  },
+  "kind": "python",
+  "max_seconds": 0.14,
+  "module": "orchestrator.py"
+}
