@@ -2,6 +2,7 @@
 from __future__ import annotations
 import json, os, shutil, subprocess, sys, tempfile, time
 from pathlib import Path
+from workspace_layout import prepare_workspace
 
 ROOT=Path(__file__).resolve().parents[1]
 HARNESS=Path(os.environ["PI_HARNESS_ROOT"]).resolve()
@@ -49,9 +50,8 @@ def merge(items):
 def run(case,variant,spent):
     if spent>=LIMIT: raise SystemExit(f"cost limit reached: {spent:.4f}")
     with tempfile.TemporaryDirectory(prefix="harnessbench-orch-") as tmp:
-        tmp=Path(tmp); workspace=tmp/"app"; shutil.copytree(case/"environment/app",workspace)
-        agent=tmp/"agent"; agent.mkdir(); (agent/"auth.json").symlink_to(AUTH)
-        sessions=tmp/"sessions"; sessions.mkdir()
+        tmp=Path(tmp)
+        workspace,agent,sessions=prepare_workspace(case,tmp,AUTH)
         instruction=(case/"instruction.md").read_text().replace("/app",str(workspace))
         stages=[]; logs=[]; failures=[]; started=time.monotonic()
         manifest=next(x for x in MANIFEST if x["id"]==case.name)

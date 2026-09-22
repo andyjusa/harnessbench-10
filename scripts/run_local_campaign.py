@@ -2,6 +2,7 @@
 from __future__ import annotations
 import json, os, shutil, subprocess, sys, tempfile, time
 from pathlib import Path
+from workspace_layout import prepare_workspace
 
 ROOT=Path(__file__).resolve().parents[1]
 HARNESS=Path(os.environ["PI_HARNESS_ROOT"]).resolve()
@@ -28,9 +29,8 @@ def metrics(output):
 def run(case,variant,spent):
     if spent>=LIMIT: raise SystemExit(f"cost limit reached: {spent:.4f}")
     with tempfile.TemporaryDirectory(prefix="harnessbench-") as tmp:
-        tmp=Path(tmp); workspace=tmp/"app"; shutil.copytree(case/"environment/app",workspace)
-        agent=tmp/"agent"; agent.mkdir(); (agent/"auth.json").symlink_to(AUTH)
-        sessions=tmp/"sessions"; sessions.mkdir()
+        tmp=Path(tmp)
+        workspace,agent,sessions=prepare_workspace(case,tmp,AUTH)
         instruction=(case/"instruction.md").read_text().replace("/app",str(workspace))
         env={**os.environ,"PI_PTC":"1" if variant=="ptc-on" else "0","PI_CODING_AGENT_DIR":str(agent),"PI_CODING_AGENT_SESSION_DIR":str(sessions)}
         command=[process_exec(),str(HARNESS/"main.mjs"),"--print","--mode","json","--provider","openai-codex","--model",MODEL,"--thinking","low",instruction]
