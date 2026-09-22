@@ -1,1 +1,1 @@
-Implement `/app/supervise.py::supervise(command, timeout)`. Return deterministic status `success`, `failure`, or `timeout`, include exit code/output, and terminate a timed-out child.
+Implement `/app/supervise.py::supervise(command, timeout)`. Return a dictionary with exactly the keys `status`, `exit_code`, and `stdout`. `status` must be `success`, `failure`, or `timeout`; preserve captured standard output in `stdout`; return the process code for completed commands; and terminate a timed-out child.

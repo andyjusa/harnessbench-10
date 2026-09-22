@@ -1,1 +1,1 @@
-Add a `timeout` tool to the Pi-style extension. Register it in `registry.py`; render collapsed text as `process · supervise <target>` and expanded text with status and elapsed milliseconds in `renderer.py`.
+Add a `timeout` tool to the Pi-style extension. Register it in `registry.py`. In `renderer.py`, `render('timeout', args, result)` must return exactly `process · supervise <target>` when collapsed. When the optional fourth argument is `True`, its output must contain `status=<status> elapsed_ms=<elapsed_ms>`.

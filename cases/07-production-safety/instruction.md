@@ -1,1 +1,1 @@
-Harden `/app/deploy.py`: reject production, never include `DEPLOY_TOKEN` in output, and execute only non-production commands through the injected runner.
+Harden `/app/deploy.py`: reject production by raising `PermissionError` before invoking the runner, never include `DEPLOY_TOKEN` in output, and execute only non-production commands through the injected runner. A staging call must pass `['deploy', '--env', 'staging']` to that runner.
